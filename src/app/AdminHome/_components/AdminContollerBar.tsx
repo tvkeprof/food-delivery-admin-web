@@ -16,7 +16,7 @@ const AdminContollerBar = ({ setStep }: any) => {
   };
 
   return (
-    <div className="w-[15%] h-full p-[26px]">
+    <div className="w-[15%] h-screen p-[26px] bg-white">
       <div className="flex w-[165px] h-[44px]">
         <LogoNomNom />
         <div>

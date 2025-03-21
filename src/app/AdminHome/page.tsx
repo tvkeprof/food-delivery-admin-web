@@ -10,7 +10,7 @@ const AdminHome = () => {
   const [step, setStep] = useState("menu");
 
   return (
-    <div className="w-full h-screen flex">
+    <div className="flex bg-[#f5f5f5]">
       <AdminContollerBar setStep={setStep} />
       {step === "menu" && <FoodMenu />}
       {step === "order" && <FoodOrders />}

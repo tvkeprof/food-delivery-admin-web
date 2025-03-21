@@ -3,7 +3,7 @@ import CategoriesContainer from "../_components/CategoriesContainer";
 
 const FoodMenu = () => {
   return (
-    <div className="w-full h-full bg-red-500">
+    <div className=" p-8 ">
       <Categories />
       <CategoriesContainer />
     </div>
