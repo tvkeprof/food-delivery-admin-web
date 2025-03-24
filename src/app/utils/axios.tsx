@@ -35,3 +35,12 @@ export const addFood = async (foodData: {
     console.log("Error while adding food:", err);
   }
 };
+
+export const getFoods = async () => {
+  try {
+    const response = await axios.get("http://localhost:9999/food");
+    return response.data;
+  } catch (err) {
+    console.log("err while getting foods", err);
+  }
+};

@@ -8,10 +8,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { addFood } from "@/app/utils/axios";
+import { addFood, getFoods, getCategories } from "@/app/utils/axios";
 import { useEffect, useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, useField } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const FoodContainer = ({ categoryId }: { categoryId: string }) => {
   const [open, setOpen] = useState(false);
@@ -46,124 +47,151 @@ const FoodContainer = ({ categoryId }: { categoryId: string }) => {
     }
   };
   const [foods, setFoods] = useState<any[]>([]);
+  const fetchFoods = async () => {
+    const data = await getFoods();
+    if (data) setFoods(data);
+  };
+  const [category, setCategory] = useState([]);
+
+  const fetchCategories = async () => {
+    const data = await getCategories();
+    if (data) setCategory(data);
+  };
+  useEffect(() => {
+    fetchFoods();
+    fetchCategories();
+  }, []);
 
   return (
-    <div>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <button className="bg-red-500 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
-            +
-          </button>
-        </DialogTrigger>
-
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add New Food</DialogTitle>
-            <DialogDescription>Enter the food details below.</DialogDescription>
-          </DialogHeader>
-
-          <Formik
-            initialValues={{
-              foodName: "",
-              price: 0,
-              image: "",
-              ingredients: "",
-            }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ setFieldValue }) => (
-              <Form>
-                {/* Food Name */}
-                <div className="mb-4">
-                  <Field
-                    type="text"
-                    name="foodName"
-                    placeholder="Food Name"
-                    className="border p-2 rounded w-full"
-                  />
-                  <ErrorMessage
-                    name="foodName"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
-                </div>
-
-                {/* Price */}
-                <div className="mb-4">
-                  <Field
-                    type="number"
-                    name="price"
-                    placeholder="Price"
-                    className="border p-2 rounded w-full"
-                  />
-                  <ErrorMessage
-                    name="price"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
-                </div>
-
-                {/* Image URL */}
-                <div className="mb-4">
-                  <Field
-                    type="text"
-                    name="image"
-                    placeholder="Image URL"
-                    className="border p-2 rounded w-full"
-                  />
-                  <ErrorMessage
-                    name="image"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
-                </div>
-
-                {/* Ingredients */}
-                <div className="mb-4">
-                  <Field
-                    as="textarea"
-                    name="ingredients"
-                    placeholder="Ingredients"
-                    className="border p-2 rounded w-full"
-                  />
-                  <ErrorMessage
-                    name="ingredients"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Add Food
+    <>
+      <div className="flex space-x-8">
+        <div className="w-1/3">
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <div className="w-[270px] h-[240px] outline-2 outline-offset-2 outline-dashed flex items-center justify-center outline-red-500 rounded-lg flex-col">
+                <button className="bg-red-500 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
+                  +
                 </button>
-              </Form>
+                <p>Add new dish to{category.name}</p>
+              </div>
+            </DialogTrigger>
+
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add New Food</DialogTitle>
+                <DialogDescription>
+                  Enter the food details below.
+                </DialogDescription>
+              </DialogHeader>
+
+              <Formik
+                initialValues={{
+                  foodName: "",
+                  price: 0,
+                  image: "",
+                  ingredients: "",
+                }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ setFieldValue }) => (
+                  <Form>
+                    <div className="mb-4">
+                      <Field
+                        type="text"
+                        name="foodName"
+                        placeholder="Food Name"
+                        className="border p-2 rounded w-full"
+                      />
+                      <ErrorMessage
+                        name="foodName"
+                        component="div"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <Field
+                        type="number"
+                        name="price"
+                        placeholder="Price"
+                        className="border p-2 rounded w-full"
+                      />
+                      <ErrorMessage
+                        name="price"
+                        component="div"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <Field
+                        type="text"
+                        name="image"
+                        placeholder="Image URL"
+                        className="border p-2 rounded w-full"
+                      />
+                      <ErrorMessage
+                        name="image"
+                        component="div"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <Field
+                        as="textarea"
+                        name="ingredients"
+                        placeholder="Ingredients"
+                        className="border p-2 rounded w-full"
+                      />
+                      <ErrorMessage
+                        name="ingredients"
+                        component="div"
+                        className="text-red-500 text-sm"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+                    >
+                      Add Food
+                    </button>
+                  </Form>
+                )}
+              </Formik>
+            </DialogContent>
+          </Dialog>
+        </div>
+
+        {/* Food List Section */}
+        <div className="flex-1">
+          <ul className="grid grid-cols-2 gap-4">
+            {Array.isArray(foods) && foods.length > 0 ? (
+              foods.map((food) => (
+                <li
+                  key={food._id}
+                  className="border p-4 rounded-lg bg-white shadow-lg"
+                >
+                  <p className="font-bold text-lg">{food.foodName}</p>
+                  <p className="text-sm text-gray-500">${food.price}</p>
+                  <img
+                    src={food.image}
+                    alt={food.foodName}
+                    className="w-20 h-20 object-cover rounded-md mt-2"
+                  />
+                  <p className="mt-2 text-sm text-gray-700">
+                    {food.ingredients}
+                  </p>
+                </li>
+              ))
+            ) : (
+              <li>No foods found.</li>
             )}
-          </Formik>
-        </DialogContent>
-      </Dialog>
-      <div className="mt-8">
-        <h2 className="text-xl font-bold">Food List</h2>
-        <ul>
-          {foods.map((food) => (
-            <li key={food._id} className="p-2 border-b">
-              <p>{food.foodName}</p>
-              <p>${food.price}</p>
-              <img
-                src={food.image}
-                alt={food.foodName}
-                className="w-20 h-20 object-cover"
-              />
-              <p>{food.ingredients}</p>
-            </li>
-          ))}
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
