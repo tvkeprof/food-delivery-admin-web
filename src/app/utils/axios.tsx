@@ -20,3 +20,18 @@ export const addCategory = async (categoryData: { categoryName: string }) => {
     console.log("Error while adding category", err);
   }
 };
+
+export const addFood = async (foodData: {
+  foodName: string;
+  price: number;
+  image: string;
+  ingredients: string;
+  category: string;
+}) => {
+  try {
+    const response = await axios.post("http://localhost:9999/food", foodData);
+    return response.data;
+  } catch (err) {
+    console.log("Error while adding food:", err);
+  }
+};
