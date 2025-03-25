@@ -44,3 +44,15 @@ export const getFoods = async () => {
     console.log("err while getting foods", err);
   }
 };
+
+export const updateFood = async (id, updatedFoodData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:9999/food/${id}`,
+      updatedFoodData
+    );
+    return response.data;
+  } catch (err) {
+    console.log("Error updating food:", err);
+  }
+};

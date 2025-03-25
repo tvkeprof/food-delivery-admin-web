@@ -15,14 +15,15 @@ const CategoriesContainer = () => {
   useEffect(() => {
     fetchCategories();
   }, []);
+
   return (
-    <div className="w-full h-screen bg-[#f5f5f5] mt-[50px] flex flex-col space-y-5">
-      {category.slice(2).map((category: any) => (
+    <div className="w-full h-auto bg-[#f5f5f5] mt-[50px] flex flex-col space-y-5">
+      {category?.slice(2).map((category: any) => (
         <div
           key={category._id}
-          className="bg-white w-full h-[325px] rounded-lg flex font-bold flex-col p-4"
+          className="bg-white w-full h-auto rounded-lg flex font-bold flex-col p-4"
         >
-          {category.categoryName}
+          <p>{category.categoryName}</p>
           <FoodContainer categoryId={category._id} />
         </div>
       ))}
