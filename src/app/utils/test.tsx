@@ -293,17 +293,17 @@
 //     }
 //   };
 
-const deleteFood = async (foodId: string) => {
-  try {
-    const response = await axios.delete(
-      `http://localhost:4000/foods/${foodId}`
-    );
-    console.log("Food item deleted:", response.data);
-    fetchData();
-  } catch (error) {
-    console.error("Error deleting food item:", error);
-  }
-};
+// const deleteFood = async (foodId: string) => {
+//   try {
+//     const response = await axios.delete(
+//       `http://localhost:4000/foods/${foodId}`
+//     );
+//     console.log("Food item deleted:", response.data);
+//     fetchData();
+//   } catch (error) {
+//     console.error("Error deleting food item:", error);
+//   }
+// };
 
 //   const fetchData = async () => {
 //     try {

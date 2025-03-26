@@ -45,7 +45,7 @@ export const getFoods = async () => {
   }
 };
 
-export const updateFood = async (id, updatedFoodData) => {
+export const updateFood = async (id: any, updatedFoodData: FormData) => {
   try {
     const response = await axios.put(
       `http://localhost:9999/food/${id}`,
