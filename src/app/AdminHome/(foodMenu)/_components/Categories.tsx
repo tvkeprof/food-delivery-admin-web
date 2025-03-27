@@ -55,7 +55,7 @@ const Categories = () => {
           {categories.map((category: any) => (
             <div
               key={category._id}
-              className="bg-amber-200 w-[135px] h-[36px] rounded-full flex items-center justify-center text-center"
+              className="bg-white w-[135px] h-[36px] outline-2 rounded-full flex items-center justify-center text-center"
             >
               {category.categoryName}
             </div>
@@ -86,7 +86,7 @@ const Categories = () => {
 
               <button
                 onClick={handleAddCategory}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full"
+                className="mt-4 bg-black text-white px-4 py-2 rounded w-full hover:bg-gray-800"
               >
                 Add
               </button>

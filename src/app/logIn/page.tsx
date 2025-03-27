@@ -19,6 +19,7 @@ const LogIn = ({}) => {
       );
       const { token } = response.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       console.log("Login success", response.data);
       if (response.data.role === "ADMIN") {
         await Router.push("/admin");
