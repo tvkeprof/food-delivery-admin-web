@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Dialog,
   DialogContent,
@@ -14,6 +13,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationSchema } from "@/app/utils/yup";
 import axios from "axios";
 import FoodCard from "./FoodCard";
+import { toast } from "react-toastify";
 
 const CLOUDINARY_CLOUD_NAME = "dnxg6ckrh";
 const NEXT_PUBLIC_CLOUDINARY_API_KEY = "996938878911193";
@@ -55,14 +55,15 @@ const FoodContainer = ({ categoryId }: { categoryId: string }) => {
       setFieldValue("image", file);
     }
   };
-
   const handleSubmit = async (
     values: any,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     try {
       setSubmitting(true);
+
       const imageUrl = await uploadImageToCloudinary(imageData!);
+
       if (imageUrl) {
         await addFood({
           foodName: values.foodName,
@@ -71,15 +72,25 @@ const FoodContainer = ({ categoryId }: { categoryId: string }) => {
           image: imageUrl,
           ingredients: values.ingredients,
         });
-        alert("Food added successfully");
-        setSubmitting(false);
+
+        toast.success("👍🏿 Food added successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
         setOpen(false);
-      } else {
-        alert("Error uploading image");
       }
     } catch (err) {
-      console.log("Error while adding food", err);
-      alert("Error while adding food");
+      console.error("Error while adding food", err);
+
+      toast.error("❌ Error while adding food", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } finally {
       setSubmitting(false);
     }

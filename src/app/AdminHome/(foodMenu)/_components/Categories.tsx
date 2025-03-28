@@ -10,16 +10,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { toast } from "react-toastify";
+import { useCategory } from "@/components/AuthProvider/CategoryProvider";
 
 const Categories = () => {
-  const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [open, setOpen] = useState(false);
 
-  const fetchCategories = async () => {
-    const data = await getCategories();
-    if (data) setCategories(data);
-  };
+  const { categories, loading, fetchCategories } = useCategory();
 
   const handleAddCategory = async () => {
     if (!newCategory.trim()) {
@@ -29,12 +27,33 @@ const Categories = () => {
 
     try {
       await addCategory({ categoryName: newCategory });
+
       setNewCategory("");
       setOpen(false);
       fetchCategories();
+      toast.success("👍🏿 Successfully added category", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (err) {
       console.error("Failed to add category:", err);
       alert("Couldn't add category");
+      toast.error("❌ Failed to add category", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 

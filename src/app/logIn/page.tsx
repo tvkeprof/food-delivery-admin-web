@@ -4,6 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Categories from "../AdminHome/(foodMenu)/_components/Categories";
 const LogIn = ({}) => {
   const Router = useRouter();
   const [formData, setFormData] = useState({
