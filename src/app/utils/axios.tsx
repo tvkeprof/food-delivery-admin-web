@@ -56,3 +56,11 @@ export const updateFood = async (id: any, updatedFoodData: FormData) => {
     console.log("Error updating food:", err);
   }
 };
+export const getOrder = async () => {
+  try {
+    const response = await axios.get("http://localhost:9999/order");
+    return response.data;
+  } catch (err) {
+    console.log("err getting order", err);
+  }
+};

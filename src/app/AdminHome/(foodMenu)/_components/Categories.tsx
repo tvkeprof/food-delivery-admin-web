@@ -74,7 +74,7 @@ const Categories = () => {
           {categories.map((category: any) => (
             <div
               key={category._id}
-              className="bg-white w-[135px] h-[36px] outline-2 rounded-full flex items-center justify-center text-center"
+              className="bg-white w-auto p-4 h-[36px] outline-2 rounded-full flex items-center justify-center text-center"
             >
               {category.categoryName}
             </div>

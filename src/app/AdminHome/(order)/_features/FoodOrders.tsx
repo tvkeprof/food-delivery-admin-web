@@ -1,5 +1,11 @@
+import { AllOrders } from "../_components/Orders";
+
 const FoodOrders = () => {
-  return <div className="w-full h-full bg-green-400"></div>;
+  return (
+    <div>
+      <AllOrders />
+    </div>
+  );
 };
 
 export default FoodOrders;
