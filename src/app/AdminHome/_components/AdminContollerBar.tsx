@@ -39,13 +39,13 @@ const AdminContollerBar = ({ setStep }: any) => {
           <Truck />
           <h1>Orders</h1>
         </div>
-        <div
+        {/* <div
           className="flex items-center gap-[10px]"
           onClick={handleFoodSettingSTeps}
         >
           <Settings />
           <h1>Settings</h1>
-        </div>
+        </div> */}
       </div>
     </div>
   );

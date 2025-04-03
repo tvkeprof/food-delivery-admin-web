@@ -111,7 +111,7 @@ const FoodContainer = ({ categoryId }: { categoryId: string }) => {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <div className="w-[270px] h-[240px] outline-2 outline-offset-2 outline-dashed flex items-center justify-center outline-red-500 rounded-lg flex-col">
-              <button className="bg-red-500 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
+              <button className="bg-red-500 hover:bg-red-300 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
                 +
               </button>
               <p>Add new dish</p>

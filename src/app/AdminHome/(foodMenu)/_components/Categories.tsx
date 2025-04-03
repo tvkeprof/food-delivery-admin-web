@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getCategories, addCategory } from "@/app/utils/axios";
+import { addCategory } from "@/app/utils/axios";
 import {
   Dialog,
   DialogContent,
@@ -82,7 +82,7 @@ const Categories = () => {
 
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <button className="bg-red-500 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
+              <button className="bg-red-500 hover:bg-red-300 rounded-full w-[32px] h-[32px] flex items-center justify-center text-white text-xl cursor-pointer">
                 +
               </button>
             </DialogTrigger>
