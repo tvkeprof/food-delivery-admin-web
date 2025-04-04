@@ -4,7 +4,6 @@ import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Categories from "../AdminHome/(foodMenu)/_components/Categories";
 const LogIn = ({}) => {
   const Router = useRouter();
   const [formData, setFormData] = useState({
@@ -15,7 +14,7 @@ const LogIn = ({}) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:9999/login",
+        "https://food-delivery-service-te0i.onrender.com/login",
         formData
       );
       const { token } = response.data;
@@ -58,8 +57,6 @@ const LogIn = ({}) => {
             setFormData({ ...formData, password: e.target.value })
           }
         />
-
-        <a className=" border">Forgor password</a>
 
         <button
           type="submit"
