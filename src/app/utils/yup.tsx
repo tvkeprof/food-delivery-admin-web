@@ -8,6 +8,5 @@ export const validationSchema = Yup.object({
     .required("Price is required")
     .positive("Price must be positive")
     .min(0.01, "Price must be at least $0.01"),
-  //   image: Yup.string().required("Image URL is required"),
   ingredients: Yup.string().required("Ingredients are required"),
 });

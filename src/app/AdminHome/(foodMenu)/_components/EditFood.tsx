@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { number } from "yup";
+
 const CLOUDINARY_CLOUD_NAME = "dnxg6ckrh";
 const CLOUDINARY_UPLOAD_PRESET = "ml_default";
 const API_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;

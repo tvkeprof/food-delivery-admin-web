@@ -17,7 +17,7 @@ const Categories = () => {
   const [newCategory, setNewCategory] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { categories, loading, fetchCategories } = useCategory();
+  const { categories, fetchCategories } = useCategory();
 
   const handleAddCategory = async () => {
     if (!newCategory.trim()) {

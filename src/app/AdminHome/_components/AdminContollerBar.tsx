@@ -2,7 +2,6 @@
 import LogoNomNom from "@/app/icons/Logo";
 import Vector from "@/app/icons/Vector";
 import { Truck } from "lucide-react";
-import Settings from "@/app/icons/Settings";
 
 const AdminContollerBar = ({ setStep }: any) => {
   const handleFoodMenuSTeps = () => {
@@ -10,9 +9,6 @@ const AdminContollerBar = ({ setStep }: any) => {
   };
   const handleFoodOrderSTeps = () => {
     setStep("order");
-  };
-  const handleFoodSettingSTeps = () => {
-    setStep("setting");
   };
 
   return (
@@ -39,13 +35,6 @@ const AdminContollerBar = ({ setStep }: any) => {
           <Truck />
           <h1>Orders</h1>
         </div>
-        {/* <div
-          className="flex items-center gap-[10px]"
-          onClick={handleFoodSettingSTeps}
-        >
-          <Settings />
-          <h1>Settings</h1>
-        </div> */}
       </div>
     </div>
   );

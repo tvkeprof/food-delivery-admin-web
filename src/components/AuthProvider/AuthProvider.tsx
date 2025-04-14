@@ -13,7 +13,7 @@ const AuthProvider = ({
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
-  const { decodedToken, isExpired } = useJwt(token || "");
+  const { isExpired } = useJwt(token || "");
 
   useEffect(() => {
     if (!token || isExpired) {

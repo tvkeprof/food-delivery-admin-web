@@ -52,7 +52,7 @@ export const getFoods = async () => {
   }
 };
 
-export const updateFood = async (id: any, updatedFoodData: FormData) => {
+export const updateFood = async (id: number, updatedFoodData: FormData) => {
   try {
     const response = await axios.put(
       `https://food-delivery-service-te0i.onrender.com/food/${id}`,

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import AdminContollerBar from "./_components/AdminContollerBar";
 import FoodMenu from "./(foodMenu)/features/FoodMenu";
-import Setting from "./(settings)/features/settings";
 import FoodOrders from "./(order)/_features/FoodOrders";
 import { useUser } from "@/components/AuthProvider/UserProvider";
 import { useCategory } from "@/components/AuthProvider/CategoryProvider";
@@ -22,7 +21,6 @@ const AdminHome = () => {
       <AdminContollerBar setStep={setStep} />
       {step === "menu" && <FoodMenu />}
       {step === "order" && <FoodOrders />}
-      {step === "setting" && <Setting />}
     </div>
   );
 };
