@@ -3,6 +3,7 @@ import LogoNomNom from "@/app/icons/Logo";
 import Vector from "@/app/icons/Vector";
 import { Truck } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdminContollerBar = ({ setStep }: any) => {
   const handleFoodMenuSTeps = () => {
     setStep("menu");

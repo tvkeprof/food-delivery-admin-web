@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const LogIn = ({}) => {
   const Router = useRouter();
   const [formData, setFormData] = useState({
@@ -66,10 +68,13 @@ const LogIn = ({}) => {
           Let's go
         </button>
       </div>
-      <div className="w-[55%] h-[80%] mr-[100px]">
-        <img
-          src="deliveryWithBike.png"
-          className="w-full h-full rounded-[10px]"
+      <div className="w-[55%] h-[80%] mr-[100px] relative">
+        <Image
+          src="/deliveryWithBike.png" // If it's in public folder
+          alt="Delivery with bike"
+          fill
+          className="object-cover rounded-[10px]"
+          priority // optional: loads the image faster for above-the-fold
         />
       </div>
     </div>

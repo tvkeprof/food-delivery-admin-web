@@ -1,12 +1,6 @@
 import * as React from "react";
-const LogoNomNom = (props: any) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={40}
-    height={40}
-    fill="none"
-    {...props}
-  >
+const LogoNomNom = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} fill="none">
     <path
       fill="#EF4444"
       fillRule="evenodd"

@@ -80,6 +80,8 @@ export const EditFoodDialog: React.FC<EditFoodDialogProps> = ({
       console.error("Error updating food:", err);
       alert("Error updating food.");
     }
+
+    console.log();
   };
 
   return (

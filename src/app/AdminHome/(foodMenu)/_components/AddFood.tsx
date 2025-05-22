@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
   Dialog,
@@ -24,7 +26,7 @@ const FoodContainer = ({ categoryId }: { categoryId: string }) => {
   const [open, setOpen] = useState(false);
   const [imageData, setImageData] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | undefined>("");
-  const [categories, setCategories] = useState<any[]>([]);
+  const [, setCategories] = useState<any[]>([]);
 
   const uploadImageToCloudinary = async (file: File) => {
     const formData = new FormData();

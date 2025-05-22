@@ -1,12 +1,6 @@
 import * as React from "react";
-const Vector = (props: any) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={18}
-    height={18}
-    fill="none"
-    {...props}
-  >
+const Vector = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="none">
     <path
       stroke="#09090B"
       strokeLinecap="round"

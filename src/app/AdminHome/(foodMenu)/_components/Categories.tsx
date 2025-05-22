@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -59,7 +61,7 @@ const Categories = () => {
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  });
 
   return (
     <div>

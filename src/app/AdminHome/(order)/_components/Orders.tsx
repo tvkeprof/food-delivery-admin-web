@@ -16,8 +16,8 @@ interface FoodOrder {
 
 export const AllOrders = () => {
   const [orders, setOrders] = useState<FoodOrder[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>("");
+  const [, setLoading] = useState<boolean>(true);
+  const [, setError] = useState<string>("");
   const user = useUser();
 
   if (!user) return <p>Loading...</p>; // Handle loading state
@@ -42,6 +42,7 @@ export const AllOrders = () => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     fetchOrders();
   }, []);

@@ -5,7 +5,7 @@ import { getCategories } from "@/app/utils/axios";
 type CategoryContextType = {
   categories: { _id: string; categoryName: string }[];
   loading: boolean;
-  fetchCategories: () => {};
+  fetchCategories: () => void;
 };
 
 const CategoryContext = createContext<CategoryContextType>(

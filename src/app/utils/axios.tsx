@@ -1,5 +1,12 @@
 import axios from "axios";
 
+interface FoodUpdatePayload {
+  foodName: string;
+  price: number;
+  ingredients: string;
+  image: string;
+}
+
 export const getCategories = async () => {
   try {
     const response = await axios.get(
@@ -52,11 +59,19 @@ export const getFoods = async () => {
   }
 };
 
-export const updateFood = async (id: number, updatedFoodData: FormData) => {
+export const updateFood = async (
+  id: string,
+  updatedFoodData: FoodUpdatePayload
+) => {
   try {
     const response = await axios.put(
       `https://food-delivery-service-te0i.onrender.com/food/${id}`,
-      updatedFoodData
+      updatedFoodData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     return response.data;
   } catch (err) {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { getFoods } from "@/app/utils/axios";
 import { useState, useEffect } from "react";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
@@ -53,7 +54,10 @@ const FoodCard = ({ categoryId }: { categoryId: string }) => {
             >
               <img
                 src={food.image}
-                className="w-[230px] h-[130px] object-cover rounded-md mt-2"
+                alt="Food item"
+                width={230}
+                height={130}
+                className="object-cover rounded-md mt-2"
               />
               <div className="flex items-center justify-between">
                 <p className="text-lg text-red-400">{food.foodName}</p>
